@@ -38,3 +38,26 @@ var convert = function (s, numRows) {
 let s = "PAYPALISHIRING"
 let numRows = 4
 console.log(convert(s, numRows));
+
+
+//? Another similar solution
+var convert2 = function (s, numRows) {
+    let result = [];
+    let row = 0;
+    let goingUp = false;
+    for (let i = 0; i < s.length; i++) {
+        //? append letter to active row
+        result[row] = (result[row] || '') + s[i];
+        if (goingUp) {
+            row--;
+            //? reverse direction if goingUp and reaching top
+            if (row === 0) goingUp = false;
+        } else {
+            row++;
+            //? reverse direction after reaching bottom
+            if (row === numRows - 1) goingUp = true;
+        }
+
+    }
+    return result.join('');
+};
