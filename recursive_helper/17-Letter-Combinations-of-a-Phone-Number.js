@@ -1,0 +1,66 @@
+//todo Given a string containing digits from 2 - 9 inclusive, return all possible letter combinations that the number could represent.Return the answer in any order.
+//todo A mapping of digit to letters(just like on the telephone buttons) is given in another file.Note that 1 does not map to any letters.
+
+/**
+ * @param {string} digits
+ * @return {string[]}
+ */
+
+// const nums = {
+//     2: ['a', 'b', 'c'],
+//     3: ['d', 'e', 'f'],
+//     4: ['g', 'h', 'i'],
+//     5: ['j', 'k', 'l'],
+//     6: ['m', 'n', 'o'],
+//     7: ['p', 'q', 'r', 's'],
+//     8: ['t', 'u', 'v'],
+//     9: ['w', 'x', 'y', 'z'],
+// }
+
+
+
+var letterCombinations = function (digits) {
+
+    if(!digits) return [];
+
+    const nums = {
+        2: 'abc',
+        3: 'def',
+        4: 'ghi',
+        5: 'jkl',
+        6: 'mno',
+        7: 'pqrs',
+        8: 'tuv',
+        9: 'wxyz',
+    }
+
+    let ans = [];
+
+    let count = digits.length;
+
+    const combine = function (str, idx) {
+        if (idx == count) {
+            ans.push(str);
+            return;
+        };
+
+        let letters = nums[digits[idx]];
+        for (let char of letters) {
+            combine(str+char, idx + 1);
+        }
+
+    }
+
+    combine('', 0);
+    return ans;
+
+};
+
+//?     Input: digits = "23"
+//?     Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
+
+//?     Input: digits = ""
+//?     Output: []
+
+//?     Input: digits = "2"
+//?     Output: ["a", "b", "c"]
