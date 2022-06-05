@@ -7,11 +7,11 @@
 var permute = function (nums) {
     let ans = [];
     let used = Array(nums.length).fill(false);
-    dfs(nums, [], ans, used);
+    backtrack(nums, [], ans, used);
     return ans;
 };
 
-function dfs(nums, path, ans, used) {
+function backtrack(nums, path, ans, used) {
     if (path.length === nums.length) {
         //* Make a deep copy, otherwise we'd be append the same list over and over.
         ans.push([...path]);
@@ -23,7 +23,7 @@ function dfs(nums, path, ans, used) {
         //* If not used, mark it used and add it to the permutation.
         used[i] = true;
         path.push(nums[i]);
-        dfs(nums, path, ans, used);
+        backtrack(nums, path, ans, used);
         //* Result added to the ans, remove the nums from permutation, then set used to false.
         path.pop();
         used[i] = false;
@@ -41,6 +41,34 @@ function dfs(nums, path, ans, used) {
 //?     Output: [[1]]
 
 console.log(permute([1, 2, 3]));
+
+//todo  Back tracking
+    //* 3 Keys of back tracking.
+    //*     1. Choices
+    //*         Choose a Number.
+    //*     2. Constraints
+    //*         We only can use one number, and we cannot use that number again.
+    //*     3. Goal
+    //*         Build a permutation.
+
+    //* Template
+    //?     Backtrack(res, args){
+    //?         if(GOAL REACHED)
+    //?             add solution to res
+    //?             return
+            
+    //?         for(let i = 0; i< NUMBER OF CHOICES; i++)
+    //?             if(CHOICE[i] is valid)
+    //?                 make choice[i]
+    //?                 Backtrack(res, args)
+    //?                 undo choice[i]
+    //?     }
+
+
+
+
+
+
 
 // Classic combinatorial search problem, we can solve it using 3 - step system
 
