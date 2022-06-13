@@ -11,15 +11,14 @@
 var strStr = function (haystack, needle) {
     if (needle.length === 0) return 0;
     for (let i = 0; i < haystack.length; i++) {
-        if (needle[0] === haystack[i]) {
-            let temp = i;
-            for (let j = 0; j < needle.length; j++) {
+        if (needle[0] === haystack[i]) {                    // If first char matches, then we check if other char matches as well
+            let temp = i;                                   // Create a temp var, so we don't change i
+            for (let j = 0; j < needle.length; j++) {       // Loop through every char in needle, if one of the char not equal, break immediately
                 if (needle[j] === haystack[temp]) {
                     temp = temp + 1;
-                }else break;
-                // If temp === startIndex + needle.length
-                // All chars matches, then we can return i, which is the index we started with
-                if (temp === i + needle.length) return i;
+                } else break;
+                if (temp === i + needle.length) return i;   // If temp === startIndex + needle.length
+                                                            // All chars matched, then we return i, which is the index we started with
             }
         }
     }
