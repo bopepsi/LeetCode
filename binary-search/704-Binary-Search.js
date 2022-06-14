@@ -13,11 +13,16 @@ var search = function (arr, target) {
     let mid;
     while (left <= right) {
         mid = Math.floor((right + left) / 2);
-        if (arr[mid] > target) right = mid - 1;
-        if (arr[mid] < target) left = mid + 1;
-        if (arr[mid] === target) return mid;
-    }
+        
+        if (arr[mid] > target) right = mid - 1;     //* continue search from left half
+        
+        if (arr[mid] < target) left = mid + 1;      //* continue search from right half
+
+        if (arr[mid] === target) return mid;        //* found
+    }   
+
     return -1;
+    
 };
 
 var searchV2 = function (arr, target) {
