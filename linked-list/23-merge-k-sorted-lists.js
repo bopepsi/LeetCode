@@ -31,7 +31,7 @@ const mergeTwoList = function (l1, l2) {
 }
 
 var mergeKLists = function (lists) {
-    if (lists.length === 0) return [];
+    if (lists.length === 0) return null;
     //* priority queue
     while (lists.length > 1) {
         let l1 = lists.shift();
