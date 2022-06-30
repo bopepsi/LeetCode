@@ -1,20 +1,33 @@
-const permutation = function (nums) {
-    let ans = [];
-    let used = [];
-    const backTrack = function (temp = []) {
-        if (temp.length === nums.length) return ans.push([...temp]);
+let arr = [
+    { winner: 'Alice', loser: 'Bob',   loser_points: 3 },
+    { winner: 'Carol', loser: 'Dean',  loser_points: 1 },
+    { winner: 'Elise', loser: 'Bob',   loser_points: 2 },
+    { winner: 'Elise', loser: 'Carol', loser_points: 4 },
+    { winner: 'Alice', loser: 'Carol', loser_points: 2 },
+    { winner: 'Carol', loser: 'Dean',  loser_points: 3 },
+    { winner: 'Dean',  loser: 'Elise', loser_points: 2 },
+  ]
 
-        for (let i = 0; i < nums.length; i++) {
+const getMatchInfo = (arr) => {
 
-            if (used[i]) continue;
+    let ans = {}; //const
 
-            used[i] = true;
-            temp.push(nums[i]);
-            backTrack(temp);
-            temp.pop();
-            used[i] = false;
-        }
+    for (let item of arr) {
+
+        let winner = item["winner"]
+        let loser = item["loser"]
+
+        ans[winner] = ans[winner] ?
+            (!ans[winner].includes(loser) && ans[winner].push(loser)) : [];
+
+        ans[loser] = ans[loser] ? ans[loser] : [];
+
+        console.log(ans[winner])
+
     }
-    backTrack([]);
+
     return ans;
+
 }
+
+console.log(getMatchInfo(arr));
