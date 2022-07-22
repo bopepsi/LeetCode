@@ -18,7 +18,7 @@ var rotate = function (nums, k) {
     }
     k = k % nums.length;
     //* Ex.                nums ===> [1,2,3,4,5,6,7], k = 3.
-    reverse(nums, 0, nums.length - k - 1);
+    reverse(nums, 0, nums.length - 1 - k);
     //* After 1st reverse: nums===> [4,3,2,1,5,6,7]
     reverse(nums, nums.length - k, nums.length - 1);
     //* After 2nd reverse: nums===> [4,3,2,1,7,6,5]

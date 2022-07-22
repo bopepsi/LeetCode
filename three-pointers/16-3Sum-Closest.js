@@ -33,3 +33,21 @@ var threeSumClosest = function (nums, target) {
 //?     Output: 0
 
 console.log(threeSumClosest([-1, 2, 1, -4], 1))
+
+const r = (nums, target) => {
+    let sum = Infinity;
+    let ans = Infinity;
+    let arr = nums.sort((a, b) => a - b);
+
+    for (i = 0; i < nums.length - 1; i++) {
+        let left = i + 1;
+        let right = nums.length - 1;
+        while (left < right) {
+            sum = arr[i] + arr[left] + arr[right];
+            if (Math.abs(sum - target) < Math.abs(ans - target)) ans = sum;
+            if (sum > target) right--;
+            else left++;
+        }
+    }
+    return ans;
+}

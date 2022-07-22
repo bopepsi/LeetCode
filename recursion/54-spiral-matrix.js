@@ -7,6 +7,7 @@
 var spiralOrder = function (matrix) {
 
     let row = matrix.length;
+
     if (row === 0) return [];
     let col = matrix[0].length;
     let ans = [...matrix[0]];
@@ -42,8 +43,8 @@ var spiralOrder = function (matrix) {
 //?     Input: matrix = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
 //?     Output: [1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7]
 
-console.log(spiralOrder([[1], [2], [3], [4], [5], [6], [7], [8], [9], [10]]))
+// console.log(spiralOrder([[1], [2], [3], [4], [5], [6], [7], [8], [9], [10]]))
 console.log(spiralOrder([[1, 2, 3, 4], [5, 6, 7, 8]]))
 console.log(spiralOrder([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
-const t = [[1, 11], [2, 12], [3, 13], [4, 14], [5, 15], [6, 16], [7, 17], [8, 18], [9, 19], [10, 20]]
-console.log(spiralOrder(t));
+// const t = [[1, 11], [2, 12], [3, 13], [4, 14], [5, 15], [6, 16], [7, 17], [8, 18], [9, 19], [10, 20]]
+// console.log(spiralOrder(t));
