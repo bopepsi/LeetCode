@@ -48,3 +48,37 @@ console.log(spiralOrder([[1, 2, 3, 4], [5, 6, 7, 8]]))
 console.log(spiralOrder([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))
 // const t = [[1, 11], [2, 12], [3, 13], [4, 14], [5, 15], [6, 16], [7, 17], [8, 18], [9, 19], [10, 20]]
 // console.log(spiralOrder(t));
+
+
+const sOrder = matrix => {
+    if (matrix.length === 0) return [];
+    let rowBegin = 0;
+    let rowEnd = matrix.length - 1;
+    let colBegin = 0;
+    let colEnd = matrix[0].length - 1;
+    let ans = [];
+
+    while (rowBegin <= rowEnd && colBegin <= colEnd) {
+        for (let i = colBegin; i <= colEnd; i++) {
+            ans.push(matrix[rowBegin][i]);
+        }
+        rowBegin++;
+        for (let j = rowBegin; j <= rowEnd; j++) {
+            ans.push(matrix[j][colEnd]);
+        }
+        colEnd--;
+        if (rowBegin <= rowEnd) {
+            for (let m = colEnd; m >= colBegin; m--) {
+                ans.push(matrix[rowEnd][m]);
+            }
+            rowEnd--;
+        }
+        if (colBegin <= colEnd) {
+            for (let n = rowEnd; n >= rowBegin; n--) {
+                ans.push(matrix[n][colBegin]);
+            }
+            colBegin++;
+        }
+    }
+    return ans;
+}
