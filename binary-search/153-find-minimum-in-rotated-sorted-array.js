@@ -24,6 +24,21 @@ var findMin = function (nums) {
     return find(nums, 0, nums.length - 1);
 };
 
+var findMinV2 = function (nums) {
+    let left = 0;
+    let right = nums.length - 1;
+    while (left + 1 < right) {
+        let mid = Math.floor((left + right) / 2);
+        if (nums[mid] > nums[right]) {
+            left = mid
+        }
+        if (nums[mid] < nums[right]) {
+            right = mid;
+        }
+    }
+    return nums[left] < nums[right] ? nums[left] : nums[right];
+}
+
 //?     Input: nums = [3,4,5,1,2]
 //?     Output: 1
 //?     Explanation: The original array was [1,2,3,4,5] rotated 3 times.

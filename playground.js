@@ -32,20 +32,20 @@
 
 // console.log(getMatchInfo(arr));
 
-var plusOne = function (digits) {
-    let endIndex = digits.length - 1;
-    const plus1 = (index) => {
-        if (index === -1) {
-            digits.unshift(1);
-            return digits;
-        }
-        if (digits[index] === 9) {
-            digits[index] = 0;
-            return plus1(index - 1)
-        } else {
-            digits[index]++;
-            return digits;
-        }
-    }
-    return plus1(endIndex);
-};
+// var plusOne = function (digits) {
+//     let endIndex = digits.length - 1;
+//     const plus1 = (index) => {
+//         if (index === -1) {
+//             digits.unshift(1);
+//             return digits;
+//         }
+//         if (digits[index] === 9) {
+//             digits[index] = 0;
+//             return plus1(index - 1)
+//         } else {
+//             digits[index]++;
+//             return digits;
+//         }
+//     }
+//     return plus1(endIndex);
+// };
