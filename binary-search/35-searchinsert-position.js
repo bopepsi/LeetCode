@@ -11,9 +11,16 @@ var searchInsert = function (nums, target) {
     //     if (target === nums[i]) return i;
     // }
     // return nums.length;
-    
-    let high = nums.length-1;
-    
+
+    let l = 0;
+    let r = nums.length;
+    while (l < r) {
+        let m = Math.floor((l + r) / 2);
+        if (nums[m] >= target) r = m
+        else l = m + 1;
+    }
+    return l;
+
 };
 
 // Input: nums = [1,3,5,6], target = 5
