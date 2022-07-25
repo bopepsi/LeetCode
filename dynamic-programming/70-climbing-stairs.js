@@ -7,7 +7,7 @@ var climbStairs = function (n) {
     for (let i = 2; i <= n; i++) {
         fib[i] = fib[i - 2] + fib[i - 1];
     }
-    return fib[n];
+    return fib[n]; 
 };
 
 var climbStairsV2 = function (n) {
