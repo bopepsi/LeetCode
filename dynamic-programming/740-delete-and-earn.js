@@ -20,5 +20,6 @@ var deleteAndEarn = function (nums) {
 
 };
 
+//* similar to house robber problem
 console.log(deleteAndEarn([2, 2, 3, 3, 3, 4]))
 console.log(deleteAndEarn([3, 1]))
