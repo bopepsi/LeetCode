@@ -17,3 +17,10 @@ var isValid = function (s) {
     }
     return remove(s);
 };
+
+var isValidV2 = function (s) {
+    while (s.includes('abc')) {
+        s.replaceAll('abc', '');
+    };
+    return s.length === 0;
+};
