@@ -17,6 +17,8 @@ var longestMountain = function (arr) {
         }
     }
 
+    console.log(inc, dec);
+    
     let ans = 0;
 
     for (let i = 0; i < arr.length; i++) {
@@ -28,7 +30,7 @@ var longestMountain = function (arr) {
 
 };
 
-console.log(longestMountain([2, 2, 2]))
+console.log(longestMountain([2, 1, 4, 7, 3, 2, 5]))
 
 //? Input: arr = [2,1,4,7,3,2,5]
 //? Output: 5
