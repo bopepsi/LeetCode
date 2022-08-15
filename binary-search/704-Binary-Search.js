@@ -7,25 +7,42 @@
  * @return {number}
  */
 
-var search = function (arr, target) {
+const search = (arr, target) => {
+
+    let l = 0;
+    let r = arr.length;
+    //* 左闭右开
+    while (l < r) {
+        let m = Math.floor((l + r) / 2);
+        if (arr[m] === target) return m;
+        if (arr[m] > target) r = m;
+        else l = m + 1;
+    }
+
+    return -1;
+
+}
+
+var searchV2 = function (arr, target) {
+
     let left = 0;
     let right = arr.length - 1;
     let mid;
     while (left <= right) {
         mid = Math.floor((right + left) / 2);
-        
+
         if (arr[mid] > target) right = mid - 1;     //* continue search from left half
-        
+
         if (arr[mid] < target) left = mid + 1;      //* continue search from right half
 
         if (arr[mid] === target) return mid;        //* found
-    }   
-
+    }
     return -1;
-    
+
 };
 
-var searchV2 = function (arr, target) {
+var searchV3 = function (arr, target) {
+
     let left = 0;
     let right = arr.length - 1;
     let mid = Math.floor(arr.length / 2);
@@ -35,6 +52,7 @@ var searchV2 = function (arr, target) {
         mid = Math.floor((right + left) / 2);
     }
     return arr[mid] === target ? mid : -1;
+
 };
 
 //?     Input: nums = [-1, 0, 3, 5, 9, 12], target = 9
