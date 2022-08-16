@@ -15,6 +15,16 @@ var isSubsequence = function (s, t) {
     return arr.length === 0;
 };
 
+var isSubsequenceV2 = function (s, t) {
+    arr = s.split('');
+    let i = 0, j = 0;
+    while (j < t.length) {
+        if (s[i] === t[j]) i++;
+        j++;
+    };
+    return i === s.length;
+};
+
 //?     Input: s = "abc", t = "ahbgdc"
 //?     Output: true
 
