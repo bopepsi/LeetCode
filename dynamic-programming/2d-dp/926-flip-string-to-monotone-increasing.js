@@ -3,7 +3,10 @@
  * @return {number}
  */
 var minFlipsMonoIncr = function (s) {
+
+    //* l: Turn [ 0 ~ i ] to all 0s. (看看有多少个1)
     let l = Array(s.length).fill(0);
+    //* r: Turn [ i ~ end ] to all 1s。 (看看有多少个0)
     let r = Array(s.length).fill(0);
     if (s[0] == 1) l[0] = 1;
     if (s[s.length - 1] == 0) r[s.length - 1] = 1;
@@ -12,7 +15,6 @@ var minFlipsMonoIncr = function (s) {
     for (let i = 1; i < s.length; i++) {
         if (s[i] == 1) l[i] = l[i - 1] + 1;
         else l[i] = l[i - 1];
-
     }
 
     for (let j = s.length - 2; j >= 0; j--) {
@@ -29,6 +31,7 @@ var minFlipsMonoIncr = function (s) {
         ans = Math.min(ans, l[k - 1] + r[k])
     }
 
+    //* 从[ 0 ~ i ]变为0[ i ~ end ]变为1， 全部变成0， 全部变成1 中选最小值
     ans = Math.min(ans, l[s.length - 1], r[0])
 
     return ans;
@@ -49,7 +52,7 @@ var minFlipsMonoIncrV2 = function (s) {
             dp[i][1] = Math.min(dp[i - 1][0], dp[i - 1][1]) + 1;
         }
     }
-    
+
     return Math.min(dp[s.length][0], dp[s.length][1]);
 
     // let dp = [0, 0];
