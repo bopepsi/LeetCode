@@ -10,13 +10,26 @@ let test = {
     }
 }
 
-const flattenObj = obj => {
+const flat = obj => {
+    let res = {};
+    for (let k1 in obj) {
+        if (typeof obj[k1] === 'object') {
+            let flattedObj = flat(obj[k1]);
+            for (let k2 in flattedObj) {
+                res[k1 + '.' + k2] = flattedObj[k2];
+            }
+        } else {
+            res[k1] = obj[k1];
+        }
+    }
+    return res;
+}
 
-    console.log(obj)
+const flattenObj = obj => {
 
     let flat = {}
     for (let i in obj) {
-        console.log(i)
+
         if (typeof obj[i] == 'object') {
             let flatObj = flattenObj(obj[i])
             for (let x in flatObj) {
@@ -26,7 +39,7 @@ const flattenObj = obj => {
             flat[i] = obj[i]
         }
     }
-    console.log(flat)
+
     return flat
 
 }
