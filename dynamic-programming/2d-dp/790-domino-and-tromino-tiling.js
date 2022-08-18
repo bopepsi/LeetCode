@@ -4,6 +4,7 @@
  */
 
 //* Check out attached images for details
+//* Similar to LC.1411
 
 var numTilings = function (n) {
 

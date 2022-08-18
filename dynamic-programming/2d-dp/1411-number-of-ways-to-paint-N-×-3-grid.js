@@ -2,6 +2,8 @@
  * @param {number} n
  * @return {number}
  */
+
+//* Similar to LC.790
 var numOfWays = function (n) {
 
     const mod = Math.pow(10, 9) + 7;
