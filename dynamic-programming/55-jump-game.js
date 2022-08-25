@@ -1,22 +1,28 @@
+//todo You are given an integer array nums.You are initially positioned at the array's first index, and each element in the array represents your maximum jump length at that position.
+//? Return true if you can reach the last index, or false otherwise.
+
 /**
  * @param {number[]} nums
  * @return {boolean}
  */
 var canJump = function (nums) {
-    let end = nums.length - 1;
+    let lastGoodIndex = nums.length - 1;
     for (let i = nums.length - 1; i >= 0; i--) {
-        if (i + nums[i] >= end) end = i;
+        if ((i + nums[i]) >= lastGoodIndex) {
+            lastGoodIndex = i;
+        }
     }
-    return end === 0;
+
+    return lastGoodIndex === 0;
+
 };
 
-var canJumpV2 = function (nums) {
-    let far = 0;
-    for (let i = 0; i < nums.length; i++) {
-        if (i > far) return false;
-        far = Math.max(far, i + nums[i]);
-    }
-    return true;
-};
+//?     Input: nums = [2, 3, 1, 1, 4]
+//?     Output: true
+//?     Explanation: Jump 1 step from index 0 to 1, then 3 steps to the last index.
 
-console.log(canJumpV2([2, 3, 1, 1, 4]));
+//?     Input: nums = [3, 2, 1, 0, 4]
+//?     Output: false
+//?     Explanation: You will always arrive at index 3 no matter what.Its maximum jump length is 0, which makes it impossible to reach the last index.
+
+console.log(canJump([3, 2, 1, 0, 4]))
