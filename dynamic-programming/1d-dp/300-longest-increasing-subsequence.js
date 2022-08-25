@@ -4,11 +4,15 @@
  */
 var lengthOfLIS = function (nums) {
     let n = nums.length;
-    let dp = Array(n).fill(1);
+    let dp = Array(n).fill(1);      
+    //* dp[i] --> length of the longest increasing subsequence ends with nums[i] at position i， 
+    //* 全部设置为1， 因为自己本身就是一个满足条件的子序列
+
+    //* 状态是一维， 时间是二维
 
     for (let i = 1; i < n; i++) {
         let max = 0;
-        for (let j = 0; j < i; j++) {
+        for (let j = 0; j < i; j++) {       //* 从dp中查找之前的最大长度， 再加一， 赋值给dp[i]
             if (nums[i] > nums[j]) {
                 max = Math.max(max, dp[j]);
             }
