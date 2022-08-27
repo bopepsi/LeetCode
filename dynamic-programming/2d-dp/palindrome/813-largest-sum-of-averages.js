@@ -8,6 +8,7 @@
 var largestSumOfAverages = function (nums, k) {
 
     let l = nums.length;
+    //* dp[k][i] --> 前 i 个元素分为 k 组， 可以达到的最大值
     let dp = Array.from({ length: k + 1 }, () => Array(nums.length + 1).fill(0));
     let sum = [0];
 
@@ -17,8 +18,8 @@ var largestSumOfAverages = function (nums, k) {
     }
 
     for (let n = 2; n <= k; n++) {
-        for (let i = n; i <= l; i++) {
-            for (let j = n - 1; j < i; j++) {
+        for (let i = n; i <= l; i++) {      //* 分成 n 组， 至少需要 n 个元素， 所以 i 最小值为 n
+            for (let j = n - 1; j < i; j++) {       //* 前 j 个元素需 k-1 组， 所以 j 最小值为 k-1
                 dp[n][i] = Math.max(dp[n][i], dp[n - 1][j] + (sum[i] - sum[j]) / [i - j]);
             }
         }
