@@ -5,11 +5,13 @@
 var findNumberOfLIS = function (nums) {
 
     let n = nums.length;
+    //* 以nums[i]结尾最长子序列的数量
     let c = Array(n).fill(1);
+    //* 以nums[i]结尾最长子序列的长度
     let l = Array(n).fill(1);
 
-    for (let i = 1; i < n; i++) {
-        for (let j = 0; j < i; j++) {
+    for (let i = 1; i < n; i++) {       //* 以 i 结尾， 从index0 到 i-1 进行遍历
+        for (let j = 0; j < i; j++) {       //* 若nums[j]<nums[i]， 看下最长子序列长度并更新 c 和 l 数组
             if (nums[i] > nums[j]) {
                 if (l[j] + 1 > l[i]) {
                     l[i] = l[j] + 1;
