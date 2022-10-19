@@ -11,8 +11,12 @@ var strangePrinter = function (s) {
         //* Empty string
         if (j > i) return 0;
 
+        //* One char
+        if (j === i) return 1;
+
         if (t[j][i] > 0) return t[j][i];
 
+        //* Default behaviour, add one operation
         let ans = helper(j, i - 1) + 1;
 
         for (let k = j; k < i; k++) {
