@@ -8,7 +8,27 @@
 
 const pathSum = nums => {
 
-    
+    //* Max depth is 4 and max nodes at bottom is 8, so we can create a 4*8 matrix to store sum for that path
+    let dp = Array.from({ length: 5 }, () => Array(8).fill(0));
+
+    for (let n of nums) {
+        let depth = Math.floor(n / 100);
+        let index = (Math.floor(n / 10)) % 10 - 1;
+        let value = n % 10;
+        dp[depth][index] = dp[depth - 1][Math.floor(index / 2)] + value
+    }
+    console.log(dp)
+    //* loop thru dp to add up path sums
+    let res = 0;
+    for (let i = 1; i <= 4; i++) {
+        for (let j = 0; j < 8; j++) {
+            if (i === 4 || (dp[i][j] !== 0 && dp[i + 1][j * 2] === 0 && dp[i + 1][j * 2 + 1] === 0)) {
+                res += dp[i][j]
+            }
+        }
+    }
+
+    return res;
 
 }
 
