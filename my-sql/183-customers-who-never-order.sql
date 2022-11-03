@@ -18,7 +18,7 @@
 -- customerId is a foreign key of the ID from the Customers table.
 -- Each row of this table indicates the ID of an order and the ID of the customer who ordered it.
 SELECT
-    name AS Customer
+    t1.name AS Customer
 FROM
     Customers t1
     LEFT JOIN Orders t2 ON t1.id = t2.customerId
