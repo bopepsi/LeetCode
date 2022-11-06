@@ -14,6 +14,7 @@ function TreeNode(val, left, right) {
     this.right = (right === undefined ? null : right)
 }
 
+//* bfs
 var findSecondMinimumValue = function (root) {
 
     let queue = [root];
@@ -39,6 +40,36 @@ var findSecondMinimumValue = function (root) {
 
 };
 
-//? Input: root = [2,2,5,null,null,5,7]
-//? Output: 5
-//? Explanation: The smallest value is 2, the second smallest value is 5.
+//* recursion
+var findSecondMinimumValue = function (root) {
+
+    if (root.left == null || root.right == null) return -1;
+
+    if (root.left.val == root.right.val) {
+        let left = findSecondMinimumValue(root.left);
+        let right = findSecondMinimumValue(root.right);
+        if (left != -1 && right != -1) {
+            return Math.min(left, right);
+        }
+        return left == -1 ? right : left;
+    }
+
+    if (root.left.val > root.val) {
+        let right = findSecondMinimumValue(root.right);
+        if (right == -1) {
+            return root.left.val;
+        }
+        return Math.min(root.left.val, right);
+    }
+
+    if (root.right.val > root.val) {
+        let left = findSecondMinimumValue(root.left);
+        if (left == -1) {
+            return root.right.val;
+        }
+        return Math.min(left, root.right.val);
+    }
+
+    return -1;
+
+};
