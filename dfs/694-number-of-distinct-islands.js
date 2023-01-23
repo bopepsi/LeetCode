@@ -21,13 +21,13 @@ const getDistinctIslands = (grid) => {
     }
 
     function dfs(i0, j0, i, j, str) {
+        if (i >= rows || i < 0 || j >= cols || j < 0 || grid[i][j] == 0) return;
         grid[i][j] = 0;
         str.push((i - i0).toString() + "-" + ((j - j0).toString()))
 
         for (const dir of dirs) {
             let x = i + dir[0];
             let y = j + dir[1];
-            if (x >= rows || x < 0 || y >= cols || y < 0 || grid[x][y] == 0) continue;
             dfs(i0, j0, x, y, str);
         }
     }
